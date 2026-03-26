@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Tracker</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        input, button { padding: 8px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>📊 Stock Portfolio Tracker</h2>
+
+<form method="POST">
+    <input type="text" name="stock" placeholder="Stock Symbol" required>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <button type="submit">Check</button>
+</form>
+
+<h3>Result:</h3>
+
+{% for stock, data in result.items() %}
+    {% if data is mapping %}
+        <p>{{ stock }} → Price: {{ data.price }}, Value: {{ data.value }}</p>
+    {% else %}
+        <p>{{ stock }} → Not Found</p>
+    {% endif %}
+{% endfor %}
+
+<h2>Total: {{ total }}</h2>
+
+</body>
+</html>
